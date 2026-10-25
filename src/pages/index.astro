@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { SITE } from '../consts';
+import { getPosts } from '../utils/posts';
+
+const posts = await getPosts();
+---
+
+<BaseLayout>
+  <section class="intro">
+    <h1>{SITE.author}</h1>
+    <p>{SITE.tagline}</p>
+  </section>
+  <h2 class="visually-hidden">Posts</h2>
+  <PostList posts={posts} />
+</BaseLayout>

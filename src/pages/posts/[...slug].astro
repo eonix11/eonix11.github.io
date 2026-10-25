@@ -1,0 +1,87 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate, getPosts, readingTime, type Post } from '../../utils/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts(); // newest first
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      newer: posts[i - 1] as Post | undefined,
+      older: posts[i + 1] as Post | undefined,
+    },
+  }));
+}
+
+interface Props {
+  post: Post;
+  newer?: Post;
+  older?: Post;
+}
+
+const { post, newer, older } = Astro.props;
+const { title, description, date, tags, code, draft } = post.data;
+const { Content } = await render(post);
+const minutes = readingTime(post.body);
+---
+
+<BaseLayout title={title} description={description} type="article" publishedTime={date} tags={tags}>
+  <article>
+    <header class="post-header">
+      <h1>{title}</h1>
+      <p class="post-meta">
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        <span aria-hidden="true"> · </span>
+        <span>{minutes} min read</span>
+        {
+          tags.length > 0 && (
+            <>
+              <span aria-hidden="true"> · </span>
+              {tags.map((tag, i) => (
+                <>
+                  {i > 0 && ' '}
+                  <a href={`/tags/${tag}/`}>#{tag}</a>
+                </>
+              ))}
+            </>
+          )
+        }
+        {draft && <span class="badge">draft</span>}
+      </p>
+    </header>
+
+    <div class="post-body">
+      <Content />
+    </div>
+
+    {
+      (code || older || newer) && (
+        <footer class="post-footer">
+          {code && (
+            <p>
+              <a href={code}>Code for this post</a>
+            </p>
+          )}
+          {(older || newer) && (
+            <nav class="post-nav" aria-label="More posts">
+              {older && (
+                <a class="prev" href={`/posts/${older.id}/`} rel="prev">
+                  <small>previous</small>
+                  {older.data.title}
+                </a>
+              )}
+              {newer && (
+                <a class="next" href={`/posts/${newer.id}/`} rel="next">
+                  <small>next</small>
+                  {newer.data.title}
+                </a>
+              )}
+            </nav>
+          )}
+        </footer>
+      )
+    }
+  </article>
+</BaseLayout>

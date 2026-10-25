@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LINKS } from '../consts';
+---
+
+<BaseLayout title="About" description="About Junaid (eonix11).">
+  <h1>About</h1>
+  <p>
+    I'm Junaid. I have been a backend and JavaScript developer for about three and a half years,
+    mostly Node, React, and Next.js on MERN and PERN stacks.
+  </p>
+  <p>
+    Now I'm learning security, C and systems programming, Linux, and AI engineering. This blog is
+    where I write down what I learn. The code for each topic lives in
+    <a href={LINKS.learningLog}>learning-log</a>.
+  </p>
+  <ul>
+    <li><a href={LINKS.github}>GitHub</a></li>
+    <li><a href={LINKS.x}>X</a></li>
+  </ul>
+</BaseLayout>

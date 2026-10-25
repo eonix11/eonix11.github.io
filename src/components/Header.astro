@@ -1,0 +1,29 @@
+---
+import { SITE } from '../consts';
+
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'posts' },
+  { href: '/tags/', label: 'tags' },
+  { href: '/about/', label: 'about' },
+];
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' || path.startsWith('/posts') : path.startsWith(href.slice(0, -1));
+---
+
+<header class="site-header">
+  <a class="site-name" href="/">{SITE.title.toLowerCase()}</a>
+  <nav aria-label="Main">
+    <ul>
+      {
+        nav.map(({ href, label }) => (
+          <li>
+            <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
