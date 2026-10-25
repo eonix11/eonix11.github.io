@@ -4,6 +4,7 @@ date: 2026-10-25
 description: 'Notes on a PHP use-after-free bug that leads to a shell, and the memory basics I needed to follow it.'
 tags: [security, linux]
 draft: false
+code: https://github.com/eonix11/learning-log/tree/main/security/php2shell
 ---
 
 > Placeholder. I will rewrite this post.

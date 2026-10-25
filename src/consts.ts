@@ -11,5 +11,5 @@ export const LINKS = {
   github: 'https://github.com/eonix11',
   learningLog: 'https://github.com/eonix11/learning-log',
   // TODO: confirm X handle.
-  x: 'https://x.com/eonix11',
+  x: 'https://x.com/eonix_11',
 };
