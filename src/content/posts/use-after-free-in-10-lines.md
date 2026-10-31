@@ -20,7 +20,7 @@ tags: [c, security]
 code: 'https://github.com/eonix11/learning-log/tree/main/c/user-after-free'
 
 # Optional. true = shown in dev only, hidden in production. Default: false.
-draft: true
+draft: false
 ---
 
 While reading about PHP2Shell, the term "use-after-free" kept coming up.
