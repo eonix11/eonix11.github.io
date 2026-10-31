@@ -4,7 +4,7 @@
 # Files that start with "_" are ignored, so this template never builds.
 
 # Required. The post title.
-title: 'Use after free in 10 c lines'
+title: 'Use after free in 10 lines of C'
 
 # Required. Publish date, YYYY-MM-DD. Posts are sorted by this date.
 date: 2026-10-31
