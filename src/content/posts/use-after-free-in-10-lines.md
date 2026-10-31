@@ -17,7 +17,7 @@ tags: [c, security]
 
 # Optional. Link to the matching folder in learning-log.
 # Shows a "Code for this post" link at the bottom. Delete the line if not needed.
-code: 'https://github.com/eonix11/learning-log/tree/main/c/user-after-free'
+code: 'https://github.com/eonix11/learning-log/tree/main/c/use-after-free'
 
 # Optional. true = shown in dev only, hidden in production. Default: false.
 draft: false
