@@ -9,8 +9,7 @@ draft: false
 
 A user clicks "Pay" twice, or the request times out and the client retries.
 The server can't tell it's a retry, so the payment happens twice.
-
-I've built payment integrations before, so I wanted to see the fix work end to end.
+I’ve built payment integrations before, so I wanted to see the fix work end to end.
 
 ## The fix
 
